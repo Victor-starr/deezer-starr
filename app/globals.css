@@ -28,6 +28,10 @@
 
   .custom-scrollbar {
     scrollbar-width: thin;
+    scrollbar-color: rgba(66, 66, 66, 0.5) transparent;
+  }
+
+  .dark .custom-scrollbar {
     scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
   }
 }
@@ -36,9 +40,11 @@ body {
   font-family: var(--font-pt-serif-caption);
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  @apply bg-gray-200 dark:bg-slate-600 pt-20 h-dvh text-black dark:text-white;
+  @apply bg-gray-200 dark:bg-slate-600 pt-20 text-black dark:text-white;
 }

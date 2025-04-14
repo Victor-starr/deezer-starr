@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, PT_Serif_Caption } from "next/font/google";
 import Navigation from "./components/_Nav";
+import MusicPlayer from "./components/MusicPlayer";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
           <Navigation />
           {children}
+          <MusicPlayer />
         </ThemeProvider>
       </body>
     </html>
