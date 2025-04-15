@@ -5,12 +5,7 @@ const nextConfig: NextConfig = {
   // Once the UI design is complete and images are fetched and placed from the API,
   // consider removing these external image domains to enhance security and maintain control over image sources.
   images: {
-    domains: [
-      "t2.genius.com",
-      "images.genius.com",
-      "cdn-images.dzcdn.net",
-      "i1.sndcdn.com",
-    ],
+    domains: ["i1.sndcdn.com"],
   },
 };
 
