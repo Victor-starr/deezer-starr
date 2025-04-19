@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, PT_Serif_Caption } from "next/font/google";
+import MusicPlayerProvider from "./context/MusicPlayerProvider";
 import Navigation from "./components/_Nav";
 import MusicPlayer from "./components/MusicPlayer";
 import { ThemeProvider } from "next-themes";
@@ -38,9 +39,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${ptSerifCaption.variable} antialiased font-oi`}
       >
         <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
-          <Navigation />
-          {children}
-          <MusicPlayer />
+          <MusicPlayerProvider>
+            <Navigation />
+            {children}
+            <MusicPlayer />
+          </MusicPlayerProvider>
         </ThemeProvider>
       </body>
     </html>

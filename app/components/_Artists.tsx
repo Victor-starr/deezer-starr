@@ -1,4 +1,4 @@
-import { Artist } from "@/types";
+import { Artist } from "@/lib/types";
 import Image from "next/image";
 
 const Artists = (artist: Artist) => {

@@ -1,4 +1,4 @@
-import { Playlist } from "@/types";
+import { Playlist } from "@/lib/types";
 import Image from "next/image";
 
 const Paylists = (playlist: Playlist) => {

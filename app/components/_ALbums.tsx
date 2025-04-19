@@ -1,9 +1,9 @@
-import { Album } from "@/types";
+import { Album } from "@/lib/types";
 import Image from "next/image";
 
-const ALbums = (album: Album) => {
+const Albums = (album: Album) => {
   return (
-    <li className="flex flex-col items-start p-5 rounded-lg max-w-[250px]">
+    <li className="flex flex-col flex-shrink-0 items-start p-5 rounded-lg max-w-[250px]">
       <Image
         src={album.cover_big}
         alt={album.title}
@@ -21,4 +21,4 @@ const ALbums = (album: Album) => {
   );
 };
 
-export default ALbums;
+export default Albums;
