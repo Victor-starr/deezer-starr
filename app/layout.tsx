@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, PT_Serif_Caption } from "next/font/google";
 import MusicPlayerProvider from "./context/MusicPlayerProvider";
-import Navigation from "./components/_Nav";
+import Navigation from "./components/Nav";
 import MusicPlayer from "./components/MusicPlayer";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";

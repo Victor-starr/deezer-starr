@@ -12,16 +12,6 @@ const TrackList = ({ tracks }: { tracks: Track[] }) => {
     playTrack(track, index);
   };
 
-  if (!tracks || tracks.length === 0) {
-    return (
-      <tr>
-        <td colSpan={4} className="text-center">
-          No tracks available.
-        </td>
-      </tr>
-    );
-  }
-
   return (
     <>
       {tracks.map((track, index) => (
