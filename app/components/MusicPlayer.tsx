@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   TbPlayerPauseFilled,
   TbPlayerPlayFilled,
@@ -16,23 +16,50 @@ const MusicPlayer = () => {
   const [isMuted, setIsMuted] = useState(false);
   const ctx = useContext(MusicPlayerContext);
 
+  const toggleMute = () => {
+    if (ctx?.audioRef?.current) {
+      ctx.audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const keyToggle = (e: KeyboardEvent) => {
+    if (!ctx) return;
+    switch (e.key) {
+      case " ":
+        e.preventDefault();
+        ctx.togglePlay();
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        ctx.playPreviousTrack();
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        ctx.playNextTrack();
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyToggle);
+    return () => {
+      window.removeEventListener("keydown", keyToggle);
+    };
+  });
+
   if (!ctx || !ctx.currentTrack) return null;
 
   const {
     currentTrack,
     isPlaying,
     togglePlay,
-    audioRef,
     playNextTrack,
     playPreviousTrack,
+    audioRef,
   } = ctx;
-
-  const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   return (
     <footer className="right-0 bottom-0 left-0 fixed flex flex-row justify-between items-center gap-2 bg-gray-500 dark:bg-gray-800 shadow-md px-10 py-4 text-white dark:text-gray-200">

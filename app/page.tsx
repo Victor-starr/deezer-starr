@@ -6,7 +6,7 @@ import PlaylistsSection, {
 } from "./components/_PlaylistsSection";
 import TrackSection, { TrackListLoader } from "./components/_TrackSection";
 
-async function HomePage() {
+function HomePage() {
   return (
     <main className="flex flex-col items-center px-5 pt-8 pb-25 h-full">
       <section className="py-8 w-[60%]">
