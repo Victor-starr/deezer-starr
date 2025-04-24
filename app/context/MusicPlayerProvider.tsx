@@ -76,7 +76,7 @@ export default function MusicPlayerProvider({
   const handleTimeUpdate = useCallback(() => {
     if (!audioRef.current) return;
     setProgress(audioRef.current.currentTime);
-    setDuration(audioRef.current.duration);
+    setDuration(audioRef.current.duration || 0);
   }, []);
 
   const handleSeek = useCallback((value: number) => {
