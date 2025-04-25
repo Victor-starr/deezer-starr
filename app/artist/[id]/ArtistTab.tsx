@@ -6,17 +6,18 @@ import TrackList from "@/app/components/_TracksList";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+interface ArtistTabParams {
+  tracks: Track[];
+  playlists: Playlist[];
+  albums: Album[];
+  relArtist: Artist[];
+}
 export default function ArtistTabs({
   tracks,
   playlists,
   albums,
   relArtist,
-}: {
-  tracks: Track[];
-  playlists: Playlist[];
-  albums: Album[];
-  relArtist: Artist[];
-}) {
+}: ArtistTabParams) {
   const [activeTab, setActiveTab] = useState<keyof typeof titles | "top-track">(
     "top-track"
   );
@@ -117,11 +118,15 @@ export default function ArtistTabs({
                     <Image
                       src={album.cover_big}
                       alt={album.title}
-                      className="shadow-2xl rounded-lg"
+                      className="shadow-2xl rounded-lg hover:scale-102 transition-transform cursor-pointer"
                       width={200}
                       height={200}
+                      onClick={() => router.push(`/album/${album.id}`)}
                     />
-                    <h2 className="pt-2 w-full font-medium text-lg truncate">
+                    <h2
+                      className="pt-2 w-full font-medium hover:text-blue-500 text-lg truncate cursor-pointer"
+                      onClick={() => router.push(`/album/${album.id}`)}
+                    >
                       {album.title}
                     </h2>
                   </li>

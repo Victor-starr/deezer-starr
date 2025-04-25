@@ -26,7 +26,9 @@ export interface Album {
   explicit_content_cover: number;
   contributors: Artist[];
   artist: Artist;
-  tracks: Track[];
+  tracks: {
+    data: Track[];
+  };
 }
 
 export interface Genre {

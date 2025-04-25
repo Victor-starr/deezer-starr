@@ -2,7 +2,7 @@ import { fetchDeezerOneArtist } from "@/lib/deezerServices";
 import { Album, Artist, Track, Playlist } from "@/lib/types";
 import ArtistTabs from "./ArtistTab";
 
-export interface DeezerOneArtistResponse {
+interface DeezerOneArtistResponse {
   artist: Artist;
   albums: Album[];
   playlists: Playlist[];
@@ -10,18 +10,14 @@ export interface DeezerOneArtistResponse {
   relArtist: Artist[];
 }
 
-export default async function ArtistPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function ArtistPage(params: { params: { id: string } }) {
   const {
     artist,
     albums,
     playlists,
     tracks,
     relArtist,
-  }: DeezerOneArtistResponse = await fetchDeezerOneArtist(params.id);
+  }: DeezerOneArtistResponse = await fetchDeezerOneArtist(params.params.id);
 
   return (
     <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 h-full text-gray-800 dark:text-gray-200">

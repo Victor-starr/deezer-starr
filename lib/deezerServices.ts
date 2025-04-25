@@ -61,3 +61,12 @@ export async function fetchDeezerOneArtist(id: string) {
     relArtist: relatedArtists.data.data,
   };
 }
+export async function FetchDeezerOneAlbum(id: string) {
+  const album = await api.get(`/album/${id}`);
+
+  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+
+  return album.data;
+}

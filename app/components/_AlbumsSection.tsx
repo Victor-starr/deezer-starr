@@ -1,6 +1,7 @@
 import { fetchDeezerAlbums } from "@/lib/deezerServices";
 import { Album } from "@/lib/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function AlbumsSection() {
   const albums: Album[] = await fetchDeezerAlbums();
@@ -8,9 +9,10 @@ export default async function AlbumsSection() {
   return (
     <ul className="flex flex-row items-center gap-5 mt-5 px-4 h-80 overflow-x-auto whitespace-nowrap custom-scrollbar">
       {albums.map((album) => (
-        <li
+        <Link
+          href={`/album/${album.id}`}
           key={album.id}
-          className="flex flex-col flex-shrink-0 items-start p-5 rounded-lg max-w-[250px]"
+          className="flex flex-col flex-shrink-0 items-start p-5 rounded-lg max-w-[250px] hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer"
         >
           <Image
             src={album.cover_big}
@@ -25,7 +27,7 @@ export default async function AlbumsSection() {
           <p className="w-full text-gray-500 text-md dark:text-gray-300 truncate">
             {album.artist.name}
           </p>
-        </li>
+        </Link>
       ))}
     </ul>
   );

@@ -8,21 +8,20 @@ export default async function ArtistsSection() {
   return (
     <ul className="flex flex-row items-center gap-5 mt-5 px-4 h-80 overflow-x-auto whitespace-nowrap custom-scrollbar">
       {artists.map((artist) => (
-        <li
+        <Link
+          href={"/artist/" + artist.id}
           key={artist.id}
-          className="flex flex-col flex-shrink-0 items-center p-5 rounded-lg"
+          className="flex flex-col flex-shrink-0 items-center p-5 rounded-lg hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer"
         >
-          <Link href={"/artist/" + artist.id}>
-            <Image
-              src={artist.picture_big}
-              alt={artist.name}
-              className="rounded-full"
-              width={180}
-              height={180}
-            />
-            <h2 className="pt-2 font-medium text-xl">{artist.name}</h2>
-          </Link>
-        </li>
+          <Image
+            src={artist.picture_big}
+            alt={artist.name}
+            className="rounded-full"
+            width={180}
+            height={180}
+          />
+          <h2 className="pt-2 font-medium text-xl">{artist.name}</h2>
+        </Link>
       ))}
     </ul>
   );

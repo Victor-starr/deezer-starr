@@ -48,3 +48,7 @@ body {
   overflow-x: hidden;
   @apply bg-gray-200 dark:bg-slate-600 pt-20 text-black dark:text-white;
 }
+
+.bg-op-50 {
+  background-color: rgba(65, 65, 65, 0.5) !important;
+}
