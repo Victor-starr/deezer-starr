@@ -17,10 +17,10 @@ const TrackList = ({ tracks }: { tracks: Track[] }) => {
       {tracks.map((track, index) => (
         <tr
           key={track.id}
-          className="flex flex-row justify-between items-center shadow-md p-4 border-gray-500 border-b cursor-pointer max-w"
+          className="flex flex-row justify-between items-center shadow-md p-4 border-gray-500 border-b hover:scale-101 transition-transform cursor-pointer max-w"
           onClick={() => handlePlay(track, index)}
         >
-          <td className="flex-1">
+          <td className="flex-1 pl-5">
             <Image
               src={track.album.cover_small}
               alt={track.title_short}

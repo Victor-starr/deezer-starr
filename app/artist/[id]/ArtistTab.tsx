@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Album, Playlist, Track, Artist } from "@/lib/types";
 import TrackList from "@/app/components/_TracksList";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function ArtistTabs({
   tracks,
@@ -24,6 +25,8 @@ export default function ArtistTabs({
     album: "Albums",
     related: "Related Artists",
   };
+
+  const router = useRouter();
 
   return (
     <section className="mt-8 w-full">
@@ -135,8 +138,14 @@ export default function ArtistTabs({
                       className="shadow-2xl rounded-lg"
                       width={200}
                       height={200}
+                      onClick={() => {
+                        router.push(`/artist/${artist.id}`);
+                      }}
                     />
-                    <h2 className="pt-2 w-full font-medium text-lg truncate">
+                    <h2
+                      className="pt-2 w-full font-medium text-lg truncate"
+                      onClick={() => router.push(`/artist/${artist.id}`)}
+                    >
                       {artist.name}
                     </h2>
                   </li>

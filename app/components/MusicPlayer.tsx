@@ -11,10 +11,12 @@ import {
   TbVolume3,
 } from "react-icons/tb";
 import { MusicPlayerContext } from "../context/MusicPlayerContext";
+import { useRouter } from "next/navigation";
 
 const MusicPlayer = () => {
   const [isMuted, setIsMuted] = useState(false);
   const ctx = useContext(MusicPlayerContext);
+  const router = useRouter();
 
   const toggleMute = () => {
     if (ctx?.audioRef?.current) {
@@ -88,7 +90,12 @@ const MusicPlayer = () => {
           <h3 className="m-0 font-semibold text-sm md:text-base">
             {currentTrack.title}
           </h3>
-          <p className="m-0 text-gray-200 dark:text-gray-500 text-xs md:text-sm">
+          <p
+            className="m-0 text-gray-200 hover:text-gray-400 dark:hover:text-gray-300 dark:text-gray-500 text-xs md:text-sm cursor-pointer"
+            onClick={() => {
+              router.push(`/artist/${currentTrack.artist.id}`);
+            }}
+          >
             {currentTrack.artist.name}
           </p>
         </div>
@@ -116,38 +123,38 @@ const MusicPlayer = () => {
 
       <div className="flex flex-1 justify-center items-center gap-6 mr-8">
         <TbPlayerTrackPrevFilled
-          className="text-2xl md:text-3xl cursor-pointer"
+          className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
           title="Previous"
           onClick={playPreviousTrack}
         />
 
         {isPlaying ? (
           <TbPlayerPauseFilled
-            className="text-2xl md:text-3xl cursor-pointer"
+            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             onClick={togglePlay}
             title="Stop"
           />
         ) : (
           <TbPlayerPlayFilled
-            className="text-2xl md:text-3xl cursor-pointer"
+            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             onClick={togglePlay}
             title="Play"
           />
         )}
         <TbPlayerTrackNextFilled
-          className="text-2xl md:text-3xl cursor-pointer"
+          className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
           title="Next"
           onClick={playNextTrack}
         />
         {isMuted ? (
           <TbVolume3
-            className="text-2xl md:text-3xl cursor-pointer"
+            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             onClick={toggleMute}
             title="Unmute"
           />
         ) : (
           <TbVolume
-            className="text-2xl md:text-3xl cursor-pointer"
+            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             onClick={toggleMute}
             title="Mute"
           />
