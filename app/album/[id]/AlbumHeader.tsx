@@ -1,13 +1,20 @@
 "use client";
 
-import { Album } from "@/lib/types";
+import { MusicPlayerContext } from "@/app/context/MusicPlayerContext";
+import { Album, Track } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 
-interface ArtistHeaderProps {
+interface AlbumHeaderProps {
   album: Album;
 }
-export default function ArtistHeader({ album }: ArtistHeaderProps) {
+export default function AlbumHeader({ album }: AlbumHeaderProps) {
+  const { playTrack, setTrackList } = useContext(MusicPlayerContext);
+  const handlePlay = (track: Track, index: number) => {
+    setTrackList(album.tracks.data);
+    playTrack(track, index);
+  };
   return (
     <header
       className="relative flex flex-row justify-center items-center bg-cover bg-center py-10 w-full"
@@ -32,7 +39,10 @@ export default function ArtistHeader({ album }: ArtistHeaderProps) {
           </Link>
           <p className="mt-2 font-bold text-gray-300 text-sm">{`Released: ${album.release_date}`}</p>
           <p className="font-bold text-sm">{`${album.fans.toLocaleString()} fans`}</p>
-          <button className="bg-blue-600 hover:bg-blue-700 shadow mt-4 px-6 py-2 rounded-lg text-white transition">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 shadow mt-4 px-6 py-2 rounded-lg text-white transition"
+            onClick={() => handlePlay(album.tracks.data[0], 0)}
+          >
             Listen Now
           </button>
         </div>
