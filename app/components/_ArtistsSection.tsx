@@ -1,6 +1,7 @@
 import { fetchDeezerArtists } from "@/lib/deezerServices";
 import { Artist } from "@/lib/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ArtistsSection() {
   const artists: Artist[] = await fetchDeezerArtists();
@@ -11,14 +12,16 @@ export default async function ArtistsSection() {
           key={artist.id}
           className="flex flex-col flex-shrink-0 items-center p-5 rounded-lg"
         >
-          <Image
-            src={artist.picture_big}
-            alt={artist.name}
-            className="rounded-full"
-            width={180}
-            height={180}
-          />
-          <h2 className="pt-2 font-medium text-xl">{artist.name}</h2>
+          <Link href={"/artist/" + artist.id}>
+            <Image
+              src={artist.picture_big}
+              alt={artist.name}
+              className="rounded-full"
+              width={180}
+              height={180}
+            />
+            <h2 className="pt-2 font-medium text-xl">{artist.name}</h2>
+          </Link>
         </li>
       ))}
     </ul>
