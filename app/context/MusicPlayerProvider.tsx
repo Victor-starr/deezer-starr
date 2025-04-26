@@ -98,6 +98,22 @@ export default function MusicPlayerProvider({
     }
   }, [handleTimeUpdate, playNextTrack]);
 
+  useEffect(() => {
+    if (currentTrack?.album?.cover_medium) {
+      const favicon = document.querySelector(
+        "link[rel='icon']"
+      ) as HTMLLinkElement;
+      if (favicon) {
+        favicon.href = currentTrack.album.cover_medium;
+      } else {
+        const newFavicon = document.createElement("link");
+        newFavicon.rel = "icon";
+        newFavicon.href = currentTrack.album.cover_medium;
+        document.head.appendChild(newFavicon);
+      }
+    }
+  }, [currentTrack?.album?.cover_medium]);
+
   return (
     <MusicPlayerContext.Provider
       value={{
