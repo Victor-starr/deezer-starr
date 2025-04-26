@@ -76,7 +76,7 @@ const MusicPlayer = () => {
   } = ctx;
 
   return (
-    <footer className="right-0 bottom-0 left-0 fixed flex flex-row justify-between items-center gap-20 bg-gray-500 dark:bg-gray-800 shadow-md px-10 py-4 text-white dark:text-gray-200">
+    <footer className="right-0 bottom-0 left-0 fixed flex flex-row justify-between items-center gap-10 md:gap-20 bg-gray-500 dark:bg-gray-800 shadow-md px-5 md:px-10 py-4 text-white dark:text-gray-200">
       <audio ref={audioRef} src={currentTrack.preview} autoPlay />
       <div className="flex flex-1 items-center gap-4">
         <Image
@@ -100,7 +100,7 @@ const MusicPlayer = () => {
           </p>
         </div>
       </div>
-      <div className="relative flex-2 mb-6">
+      <div className="hidden md:block relative flex-2 mb-6">
         <label htmlFor="labels-range-input" className="sr-only">
           Labels range
         </label>

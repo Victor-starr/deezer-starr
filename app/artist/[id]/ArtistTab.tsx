@@ -32,14 +32,14 @@ export default function ArtistTabs({
   return (
     <section className="mt-8 w-full">
       <nav className="flex justify-center mb-6">
-        <ul className="flex gap-8 font-medium text-lg">
+        <ul className="flex gap-6 font-medium text-sm md:text-base lg:text-lg">
           <li
             className={`hover:text-sky-500 cursor-pointer ${
               activeTab === "top-track" ? "text-sky-500" : ""
             }`}
             onClick={() => setActiveTab("top-track")}
           >
-            Top tracks
+            Top
           </li>
           <li
             className={`hover:text-sky-500 cursor-pointer ${

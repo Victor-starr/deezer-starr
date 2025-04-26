@@ -8,30 +8,30 @@ import TrackSection, { TrackListLoader } from "./components/_TrackSection";
 
 function HomePage() {
   return (
-    <main className="flex flex-col items-center px-5 pt-8 pb-25 h-full">
-      <section className="py-8 w-[60%]">
-        <h1 className="text-5xl">Popular Playlists</h1>
+    <main className="flex flex-col items-center px-5 pt-8 pb-25 w-screen h-full">
+      <section className="py-8 w-[90%] md:w-[60%]">
+        <h1 className="text-2xl md:text-5xl">Popular Playlists</h1>
         <Suspense fallback={<PlaylistsLoader />}>
           <PlaylistsSection />
         </Suspense>
       </section>
 
-      <section className="py-8 w-[60%]">
-        <h1 className="text-5xl">Popular Artists</h1>
+      <section className="py-8 w-[90%] md:w-[60%]">
+        <h1 className="text-2xl md:text-5xl">Popular Artists</h1>
         <Suspense fallback={<ArtistLoader />}>
           <ArtistsSection />
         </Suspense>
       </section>
 
-      <section className="py-8 w-[60%]">
-        <h1 className="text-5xl">Most Streamed Albums</h1>
+      <section className="py-8 w-[90%] md:w-[60%]">
+        <h1 className="text-2xl md:text-5xl">Most Streamed Albums</h1>
         <Suspense fallback={<AlbumsLoader />}>
           <AlbumsSection />
         </Suspense>
       </section>
 
-      <section className="py-8 w-[60%]">
-        <h1 className="text-5xl">Popular Tracks</h1>
+      <section className="py-8 pb-25 w-full md:w-[60%]">
+        <h1 className="text-2xl md:text-5xl">Popular Tracks</h1>
         <Suspense fallback={<TrackListLoader />}>
           <TrackSection />
         </Suspense>

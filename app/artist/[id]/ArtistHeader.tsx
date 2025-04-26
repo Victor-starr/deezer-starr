@@ -21,15 +21,18 @@ export default function ArtistHeader({ artist, tracklist }: AlbumHeaderProps) {
   return (
     <header
       style={{ backgroundImage: `url(${artist.picture_xl})` }}
-      className="flex flex-col justify-center items-center bg-cover bg-center shadow-lg w-full h-[300px]"
+      className="relative flex flex-col justify-center items-center bg-cover bg-center shadow-lg py-20 w-full h-auto md:h-[300px]"
     >
-      <h1 className="drop-shadow-md font-bold text-white text-4xl">
+      <div className="absolute inset-0 bg-black bg-op-50"></div>
+      <h1 className="z-10 drop-shadow-md font-bold text-white text-3xl md:text-4xl">
         {artist.name}
       </h1>
-      <span className="flex flex-col items-center mt-2">
-        <p className="text-gray-200 text-lg">{artist.nb_fan} fans</p>
+      <span className="z-10 flex flex-col items-center mt-2">
+        <p className="text-gray-200 text-base md:text-lg">
+          {artist.nb_fan} fans
+        </p>
         <button
-          className="bg-sky-500 hover:bg-sky-700 shadow-md mt-2 px-4 py-2 rounded-full font-medium text-white"
+          className="bg-sky-500 hover:bg-sky-700 shadow-md mt-2 px-4 py-2 rounded-full font-medium text-white text-sm md:text-base"
           onClick={handlePlay}
         >
           Listen
