@@ -70,3 +70,13 @@ export async function FetchDeezerOneAlbum(id: string) {
 
   return album.data;
 }
+
+export async function fetchDeezerOnePlaylist(id: string) {
+  const playlist = await api.get(`/playlist/${id}`);
+
+  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+
+  return playlist.data;
+}

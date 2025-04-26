@@ -1,6 +1,7 @@
 import { fetchDeezerPlaylists } from "@/lib/deezerServices";
 import { Playlist } from "@/lib/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function PlaylistsSection() {
   const playlists: Playlist[] = await fetchDeezerPlaylists();
@@ -8,9 +9,10 @@ export default async function PlaylistsSection() {
   return (
     <ul className="flex flex-row items-center gap-5 mt-5 px-4 h-85 overflow-x-auto whitespace-nowrap custom-scrollbar">
       {playlists.map((playlist) => (
-        <li
+        <Link
+          href={`/playlist/${playlist.id}`}
           key={playlist.id}
-          className="flex flex-col flex-shrink-0 items-start p-5 rounded-lg max-w-[250px] overflow-hidden"
+          className="flex flex-col flex-shrink-0 items-start p-5 rounded-lg max-w-[250px] overflow-hidden hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer"
         >
           <Image
             src={playlist.picture_big}
@@ -25,7 +27,7 @@ export default async function PlaylistsSection() {
           <p className="w-full text-gray-500 text-md dark:text-gray-300 truncate">
             {playlist.nb_tracks} tracks
           </p>
-        </li>
+        </Link>
       ))}
     </ul>
   );

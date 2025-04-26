@@ -84,11 +84,13 @@ export interface Playlist {
   picture_xl: string;
   checksum: string;
   creation_date: Date;
-  user: {
+  creator: {
     id: number;
     name: string;
   };
-  tracks: Track[];
+  tracks: {
+    data: Track[];
+  };
 }
 export interface Radio {
   id: number;
