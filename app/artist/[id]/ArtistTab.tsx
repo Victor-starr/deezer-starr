@@ -92,6 +92,7 @@ export default function ArtistTabs({
                 playlists.map((playlist) => (
                   <li
                     key={playlist.id}
+                    onClick={() => router.push(`/playlist/${playlist.id}`)}
                     className="flex flex-col items-start bg-white dark:bg-gray-800 shadow-md p-5 rounded-lg max-w-[250px]"
                   >
                     <Image
@@ -100,8 +101,12 @@ export default function ArtistTabs({
                       className="shadow-2xl rounded-lg object-cover"
                       width={220}
                       height={220}
+                      onClick={() => router.push(`/playlist/${playlist.id}`)}
                     />
-                    <h2 className="pt-2 w-full font-medium text-lg truncate">
+                    <h2
+                      className="pt-2 w-full font-medium text-lg truncate"
+                      onClick={() => router.push(`/playlist/${playlist.id}`)}
+                    >
                       {playlist.title}
                     </h2>
                     <p className="w-full text-gray-500 text-md dark:text-gray-300 truncate">
