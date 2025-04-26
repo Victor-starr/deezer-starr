@@ -6,9 +6,10 @@ import PlaylistHeader from "./PlaylistHeader";
 export default async function PlaylistPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const playlist: Playlist = await fetchDeezerOnePlaylist(params.id);
+  const { id } = await params;
+  const playlist: Playlist = await fetchDeezerOnePlaylist(id);
   return (
     <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 min-h-screen text-gray-800 dark:text-gray-200">
       <PlaylistHeader playlist={playlist} />

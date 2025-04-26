@@ -5,9 +5,10 @@ import AlbumHeader from "./AlbumHeader";
 export default async function AlbumPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const album: Album = await FetchDeezerOneAlbum(params.id);
+  const { id } = await params;
+  const album: Album = await FetchDeezerOneAlbum(id);
   return (
     <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 min-h-screen text-gray-800 dark:text-gray-200">
       <AlbumHeader album={album} />

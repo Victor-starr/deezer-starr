@@ -14,15 +14,16 @@ interface DeezerOneArtistResponse {
 export default async function ArtistPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const {
     artist,
     albums,
     playlists,
     tracks,
     relArtist,
-  }: DeezerOneArtistResponse = await fetchDeezerOneArtist(params.id);
+  }: DeezerOneArtistResponse = await fetchDeezerOneArtist(id);
 
   return (
     <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 h-full text-gray-800 dark:text-gray-200">
