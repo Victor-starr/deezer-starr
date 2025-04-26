@@ -10,7 +10,7 @@ export default async function AlbumPage({
   const { id } = await params;
   const album: Album = await FetchDeezerOneAlbum(id);
   return (
-    <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 min-h-screen text-gray-800 dark:text-gray-200">
+    <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 pt-8 pb-25 min-h-screen text-gray-800 dark:text-gray-200">
       <AlbumHeader album={album} />
       <article className="mt-8 w-full max-w-4xl">
         <h2 className="mb-4 font-semibold text-2xl text-center">Tracks List</h2>

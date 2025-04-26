@@ -26,7 +26,7 @@ export default async function ArtistPage({
   }: DeezerOneArtistResponse = await fetchDeezerOneArtist(id);
 
   return (
-    <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 px-5 pt-8 pb-25 h-full text-gray-800 dark:text-gray-200">
+    <main className="flex flex-col items-center bg-gray-100 dark:bg-gray-900 pt-8 pb-25 h-full text-gray-800 dark:text-gray-200">
       <ArtistHeader artist={artist} tracklist={tracks} />
 
       <ArtistTabs

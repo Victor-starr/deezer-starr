@@ -17,7 +17,7 @@ export default function AlbumHeader({ album }: AlbumHeaderProps) {
   };
   return (
     <header
-      className="relative flex md:flex-row flex-col justify-center items-center gap-8 bg-cover bg-center py-5 md:py-10 w-full"
+      className="relative flex md:flex-row flex-col justify-center items-center gap-8 bg-cover bg-center px-8 py-10 w-full"
       style={{ backgroundImage: `url(${album.artist.picture_xl})` }}
     >
       <div className="absolute inset-0 bg-black bg-op-50"></div>
@@ -29,10 +29,10 @@ export default function AlbumHeader({ album }: AlbumHeaderProps) {
         className="z-10 shadow-lg rounded-lg object-cover"
       />
       <div className="z-10 flex flex-col text-white">
-        <h1 className="font-bold text-4xl">{album.title}</h1>
+        <h1 className="font-bold text-2xl md:text-4xl">{album.title}</h1>
         <Link
           href={`/artist/${album.artist.id}`}
-          className="mt-2 text-gray-300 hover:text-blue-500 text-xl hover:underline hover:scale-102 transition-transform cursor-pointer transform"
+          className="mt-2 text-gray-300 hover:text-blue-500 text-base md:text-xl hover:underline hover:scale-102 transition-transform cursor-pointer transform"
         >
           {album.artist.name}
         </Link>
