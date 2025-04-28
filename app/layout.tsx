@@ -5,6 +5,7 @@ import Navigation from "./components/Nav";
 import MusicPlayer from "./components/MusicPlayer";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ const ptSerifCaption = PT_Serif_Caption({
 
 export const metadata: Metadata = {
   title: "Deezer Starr",
-  description: "A simple music player",
+  description: "A simple music player app to explore playlists, artists, albums, and tracks.",
 };
 
 export default function RootLayout({
@@ -35,16 +36,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="author" content="Deezer Starr Team" />
+      <meta name="keywords" content="Deezer, music, playlists, artists, albums, tracks, music player" />
+      </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ptSerifCaption.variable} antialiased font-oi`}
+      className={`${geistSans.variable} ${geistMono.variable} ${ptSerifCaption.variable} antialiased font-oi`}
       >
-        <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
-          <MusicPlayerProvider>
-            <Navigation />
-            {children}
-            <MusicPlayer />
-          </MusicPlayerProvider>
-        </ThemeProvider>
+      <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
+        <MusicPlayerProvider>
+        <Navigation />
+        {children}
+        <MusicPlayer />
+        </MusicPlayerProvider>
+      </ThemeProvider>
       </body>
     </html>
   );
