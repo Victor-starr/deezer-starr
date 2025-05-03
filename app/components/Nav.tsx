@@ -28,7 +28,6 @@ const Navigation = () => {
       </Link>
 
       <div className="flex items-center gap-4">
-        {/* TODO: ENABLE WHEN SEARCH PAGE IS READY */}
         <Link href={"/search"} className="block p-2">
           <FaSearch size={20} className="text-gray-800 dark:text-gray-200" />
         </Link>

@@ -1,7 +1,9 @@
 import { Track, Album, Artist, Playlist } from "@/lib/types";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { typesType, SearchProps } from "@/app/search/page";
+import { useRouter } from "next/navigation";
+import { MusicPlayerContext } from "../context/MusicPlayerContext";
 
 interface SearchSectionProps {
   data: SearchProps;
@@ -9,8 +11,15 @@ interface SearchSectionProps {
 
 export default function SearchSection({ data }: SearchSectionProps) {
   const [selectedType, setSelectedType] = useState<typesType>("track");
+  const { playTrack, setTrackList } = useContext(MusicPlayerContext);
+
+  const handlePlay = (track: Track, index: number) => {
+    setTrackList(items as Track[]);
+    playTrack(track, index);
+  };
 
   const items = data[selectedType];
+  const router = useRouter();
 
   return (
     <section>
@@ -33,13 +42,14 @@ export default function SearchSection({ data }: SearchSectionProps) {
         </ul>
       </nav>
       <ul className="gap-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-        {items.map((item) => {
+        {items.map((item, index) => {
           if (selectedType === "track") {
             const track = item as Track;
             return (
               <li
                 key={track.id}
-                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg"
+                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg hover:scale-105 transition-transform duration-200 cursor-pointer"
+                onClick={() => handlePlay(track, index)}
               >
                 <Image
                   src={track.album.cover_medium}
@@ -59,7 +69,8 @@ export default function SearchSection({ data }: SearchSectionProps) {
             return (
               <li
                 key={album.id}
-                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg"
+                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg hover:scale-105 transition-transform duration-200 cursor-pointer"
+                onClick={() => router.push(`/album/${album.id}`)}
               >
                 <Image
                   src={album.cover_medium}
@@ -79,7 +90,8 @@ export default function SearchSection({ data }: SearchSectionProps) {
             return (
               <li
                 key={artist.id}
-                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg"
+                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg hover:scale-105 transition-transform duration-200 cursor-pointer"
+                onClick={() => router.push(`/artist/${artist.id}`)}
               >
                 <Image
                   src={artist.picture_medium}
@@ -96,7 +108,8 @@ export default function SearchSection({ data }: SearchSectionProps) {
             return (
               <li
                 key={playlist.id}
-                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg"
+                className="bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg hover:scale-105 transition-transform duration-200 cursor-pointer"
+                onClick={() => router.push(`/playlist/${playlist.id}`)}
               >
                 <Image
                   src={playlist.picture_medium}
