@@ -1,3 +1,4 @@
+"use server";
 import api from "@/lib/api";
 
 export async function fetchDeezerPlaylists() {
@@ -79,4 +80,24 @@ export async function fetchDeezerOnePlaylist(id: string) {
   }
 
   return playlist.data;
+}
+
+export async function fetchDeezerSearch(query: string) {
+  const response = await Promise.all([
+    api.get(`/search/artist?q=${query}`),
+    api.get(`/search/album?q=${query}`),
+    api.get(`/search/playlist?q=${query}`),
+    api.get(`/search/track?q=${query}`),
+  ]);
+
+  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+
+  return {
+    artist: response[0].data.data,
+    album: response[1].data.data,
+    playlist: response[2].data.data,
+    track: response[3].data.data,
+  };
 }

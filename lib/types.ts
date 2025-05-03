@@ -84,7 +84,7 @@ export interface Playlist {
   picture_xl: string;
   checksum: string;
   creation_date: Date;
-  creator: {
+  user: {
     id: number;
     name: string;
   };
@@ -149,4 +149,17 @@ export interface Track {
   album: Album;
 }
 
-// export interface Search{}
+export interface Search {
+  id: number;
+  readable: boolean;
+  title: string;
+  title_short: string;
+  title_version: string;
+  link: string;
+  duration: number;
+  rank: number;
+  explicit_lyrics: boolean;
+  preview: string;
+  artist: Artist;
+  album: Album;
+}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { FaDeezer } from "react-icons/fa";
+import { FaDeezer, FaSearch } from "react-icons/fa";
 import { IoInvertMode } from "react-icons/io5";
 
 const Navigation = () => {
@@ -29,9 +29,9 @@ const Navigation = () => {
 
       <div className="flex items-center gap-4">
         {/* TODO: ENABLE WHEN SEARCH PAGE IS READY */}
-        {/* <button className="block p-2">
+        <Link href={"/search"} className="block p-2">
           <FaSearch size={20} className="text-gray-800 dark:text-gray-200" />
-        </button> */}
+        </Link>
 
         {mounted && (
           <button onClick={toggleTheme} className="p-2">
