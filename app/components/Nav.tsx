@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { FaDeezer, FaSearch } from "react-icons/fa";
+import { FaDeezer, FaSearch, FaGithub } from "react-icons/fa";
 import { IoInvertMode } from "react-icons/io5";
 
 const Navigation = () => {
@@ -18,7 +18,7 @@ const Navigation = () => {
   if (!mounted) return null;
 
   return (
-    <nav className="top-0 right-0 left-0 z-100 fixed flex flex-row justify-between items-center gap-5 bg-gray-200 dark:bg-gray-800 shadow-md px-8 py-4 w-full h-20">
+    <nav className="top-0 right-0 left-0 z-100 fixed flex flex-row justify-between items-center gap-5 bg-gray-200 dark:bg-gray-800 shadow-md px-12 py-4 w-full h-20">
       <Link
         href="/"
         className="flex items-center gap-2 font-bold text-gray-500 dark:text-gray-200 text-xl"
@@ -40,6 +40,15 @@ const Navigation = () => {
             />
           </button>
         )}
+        <Link
+          href="htttps://github.com/Victor-starr/deezer-starr"
+          target="_blank"
+        >
+          <FaGithub
+            size={25}
+            className="text-gray-800 dark:text-gray-200 cursor-pointer"
+          />
+        </Link>
       </div>
     </nav>
   );
