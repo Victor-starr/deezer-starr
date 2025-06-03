@@ -16,7 +16,7 @@ import MP3Device from "./MP3Device";
 
 const MusicPlayer = () => {
   const [isMuted, setIsMuted] = useState(false);
-  const [mp3Device, setMp3Device] = useState(false);
+  const [showMp3Device, setShowMp3Device] = useState(false);
   const ctx = useContext(MusicPlayerContext);
   const router = useRouter();
 
@@ -79,9 +79,18 @@ const MusicPlayer = () => {
 
   return (
     <>
-      {mp3Device && <MP3Device />}
+      {showMp3Device && (
+        <MP3Device
+          displaying={showMp3Device}
+          onClose={() => setShowMp3Device(false)}
+          context={ctx}
+          toggleMute={toggleMute}
+          isMuted={isMuted}
+          handleInputRange={handleInputRange}
+        />
+      )}
       <footer
-        onClick={() => setMp3Device(!mp3Device)}
+        onClick={() => setShowMp3Device(true)}
         className="right-0 bottom-0 left-0 z-10 fixed flex flex-row justify-between items-center gap-10 md:gap-20 bg-gray-500 dark:bg-gray-800 shadow-md px-5 md:px-10 py-4 text-white dark:text-gray-200"
       >
         <audio ref={audioRef} src={currentTrack.preview} autoPlay />
