@@ -1,44 +1,25 @@
-"use server";
 import api from "@/lib/api";
+import { cache } from "react";
+import { Playlist, Artist, Album } from "@/lib/types";
 
-export async function fetchDeezerPlaylists() {
-  const response = await api.get(`/chart/0/playlists?limit=30`);
-
+async function fetchDeezerChart<T>(endpoint: string): Promise<T[]> {
+  const response = await api.get(endpoint);
   if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
     await new Promise((resolve) => setTimeout(resolve, 2000));
   }
-
   return response.data.data;
 }
-export async function fetchDeezerArtists() {
-  const response = await api.get(`/chart/0/artists?limit=30`);
+export const fetchDeezerPlaylists = cache(() =>
+  fetchDeezerChart<Playlist>("/chart/0/playlists?limit=30")
+);
 
-  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
+export const fetchDeezerArtists = cache(async () =>
+  fetchDeezerChart<Artist>("/chart/0/artists?limit=30")
+);
 
-  return response.data.data;
-}
-
-export async function fetchDeezerAlbums() {
-  const response = await api.get(`/chart/0/albums?limit=30`);
-
-  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
-
-  return response.data.data;
-}
-
-export async function fetchDeezerTracks() {
-  const response = await api.get(`/chart/0/tracks?limit=30`);
-
-  if (process.env.NEXT_PUBLIC_API_DELAY === "true") {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
-
-  return response.data.data;
-}
+export const fetchDeezerAlbums = cache(async () =>
+  fetchDeezerChart<Album>(`/chart/0/albums?limit=30`)
+);
 
 export async function fetchDeezerOneArtist(id: string) {
   const [artist, albums, playlist, topTracks, relatedArtists] =

@@ -90,7 +90,11 @@ const MusicPlayer = () => {
         />
       )}
       <footer
-        onClick={() => setShowMp3Device(true)}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setShowMp3Device(true);
+          }
+        }}
         className="right-0 bottom-0 left-0 z-10 fixed flex flex-row justify-between items-center gap-10 md:gap-20 bg-gray-500 dark:bg-gray-800 shadow-md px-5 md:px-10 py-4 text-white dark:text-gray-200"
       >
         <audio ref={audioRef} src={currentTrack.preview} autoPlay />
