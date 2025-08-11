@@ -1,6 +1,6 @@
 import api from "@/lib/api";
 import { cache } from "react";
-import { Playlist, Artist, Album } from "@/lib/types";
+import { Playlist, Artist, Album, Track } from "@/lib/types";
 
 async function fetchDeezerChart<T>(endpoint: string): Promise<T[]> {
   const response = await api.get(endpoint);
@@ -19,6 +19,10 @@ export const fetchDeezerArtists = cache(async () =>
 
 export const fetchDeezerAlbums = cache(async () =>
   fetchDeezerChart<Album>(`/chart/0/albums?limit=30`)
+);
+
+export const fetchDeezerTracks = cache(async () =>
+  fetchDeezerChart<Track>("/chart/0/tracks?limit=30")
 );
 
 export async function fetchDeezerOneArtist(id: string) {

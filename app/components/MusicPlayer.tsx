@@ -95,7 +95,7 @@ const MusicPlayer = () => {
             setShowMp3Device(true);
           }
         }}
-        className="right-0 bottom-0 left-0 z-10 fixed flex flex-row justify-between items-center gap-10 md:gap-20 bg-gray-500 dark:bg-gray-800 shadow-md px-5 md:px-10 py-4 text-white dark:text-gray-200"
+        className="right-0 bottom-0 left-0 z-10 fixed flex flex-row justify-between items-center gap-10 md:gap-20 bg-gray-200 dark:bg-gray-800 shadow-[0_0_5px_1px_gray] dark:shadow-none px-5 md:px-10 py-4"
       >
         <audio ref={audioRef} src={currentTrack.preview} autoPlay />
         <div className="flex flex-1 items-center gap-4">
@@ -105,13 +105,14 @@ const MusicPlayer = () => {
             width={50}
             height={50}
             className="rounded"
+            onClick={() => setShowMp3Device(true)}
           />
           <div>
-            <h3 className="m-0 font-semibold text-sm md:text-base">
+            <h3 className="m-0 font-semibold text-gray-700 dark:text-white text-sm md:text-base">
               {currentTrack.title}
             </h3>
             <p
-              className="m-0 text-gray-200 hover:text-gray-400 dark:hover:text-gray-300 dark:text-gray-500 text-xs md:text-sm cursor-pointer"
+              className="m-0 text-gray-500 hover:text-gray-400 dark:hover:text-gray-300 dark:text-gray-500 text-xs md:text-sm cursor-pointer"
               onClick={() => {
                 router.push(`/artist/${currentTrack.artist.id}`);
               }}
@@ -131,50 +132,50 @@ const MusicPlayer = () => {
             max={duration || 0}
             value={progress}
             onChange={handleInputRange}
-            className="bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-2 appearance-none cursor-pointer"
+            className="bg-gray-400 [&::-moz-range-thumb]:bg-blue-500 [&::-ms-thumb]:bg-blue-500 [&::-webkit-slider-thumb]:bg-blue-500 dark:bg-gray-700 [&::-moz-range-thumb]:border-radius-full [&::-ms-thumb]:border-radius-full [&::-moz-range-thumb]:border-none [&::-ms-thumb]:border-none [&::-webkit-slider-thumb]:border-none rounded-lg [&::-webkit-slider-thumb]:rounded-full w-full [&::-webkit-slider-thumb]:w-4 h-2 [&::-webkit-slider-thumb]:h-4 appearance-none [&::-moz-range-thumb]:appearance-none [&::-ms-thumb]:appearance-none [&::-webkit-slider-thumb]:appearance-none cursor-pointer [&::-moz-range-thumb]:height-4 [&::-moz-range-thumb]:width-4 [&::-ms-thumb]:height-4 [&::-ms-thumb]:width-4"
           />
-          <span className="-bottom-6 absolute text-gray-500 dark:text-gray-400 text-sm start-0">
+          <span className="-bottom-6 absolute text-gray-700 dark:text-gray-400 text-sm start-0">
             {new Date(progress * 1000).toISOString().slice(14, 19)}
           </span>
-          <span className="-bottom-6 absolute text-gray-500 dark:text-gray-400 text-sm end-0">
+          <span className="-bottom-6 absolute text-gray-700 dark:text-gray-400 text-sm end-0">
             {new Date((duration || 0) * 1000).toISOString().slice(14, 19)}
           </span>
         </div>
 
         <div className="flex flex-1 justify-center items-center gap-6 mr-8">
           <TbPlayerTrackPrevFilled
-            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+            className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             title="Previous"
             onClick={playPreviousTrack}
           />
 
           {isPlaying ? (
             <TbPlayerPauseFilled
-              className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+              className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
               onClick={togglePlay}
               title="Stop"
             />
           ) : (
             <TbPlayerPlayFilled
-              className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+              className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
               onClick={togglePlay}
               title="Play"
             />
           )}
           <TbPlayerTrackNextFilled
-            className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+            className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
             title="Next"
             onClick={playNextTrack}
           />
           {isMuted ? (
             <TbVolume3
-              className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+              className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
               onClick={toggleMute}
               title="Unmute"
             />
           ) : (
             <TbVolume
-              className="text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
+              className="text-gray-700 dark:text-white text-2xl md:text-3xl hover:scale-125 transition-transform cursor-pointer"
               onClick={toggleMute}
               title="Mute"
             />

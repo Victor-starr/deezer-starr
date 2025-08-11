@@ -41,7 +41,7 @@ const Navigation = () => {
           </button>
         )}
         <Link
-          href="htttps://github.com/Victor-starr/deezer-starr"
+          href="https://github.com/Victor-starr/deezer-starr"
           target="_blank"
         >
           <FaGithub

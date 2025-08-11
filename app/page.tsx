@@ -5,6 +5,7 @@ import AlbumsSection, { AlbumsLoader } from "./components/_AlbumsSection";
 import PlaylistsSection, {
   PlaylistsLoader,
 } from "./components/_PlaylistsSection";
+import TrackSection, { TrackListLoader } from "./components/_TrackSection";
 
 function HomePage() {
   return (
@@ -40,6 +41,13 @@ function HomePage() {
           <h1 className="text-2xl md:text-5xl">Most Streamed Albums</h1>
           <Suspense fallback={<AlbumsLoader />}>
             <AlbumsSection />
+          </Suspense>
+        </section>
+
+        <section className="py-8 pb-25 w-full md:w-[60%]">
+          <h1 className="text-2xl md:text-5xl">Popular Tracks</h1>
+          <Suspense fallback={<TrackListLoader />}>
+            <TrackSection />
           </Suspense>
         </section>
       </main>
